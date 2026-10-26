@@ -164,9 +164,7 @@ for (let i = 1; i <= 6; i++) {
     for (let j = 1; j <= 6; j++) {
         const cell = document.createElement("td");
         const e = document.createElement("button");
-        e.addEventListener("click", function() {
-            e.style.backgroundColor = "red";
-        });
+        
         if ((i === ay1 && j === ax1)) {
             e.style.backgroundColor = "blue";
         }
@@ -186,7 +184,13 @@ for (let i = 1; i <= 6; i++) {
         if ((i === ay33 && j === ax33)) {
             e.style.backgroundColor = "blue";
         }
-        
+        e.addEventListener("click", function() {
+            if (e.style.backgroundColor !== "blue") {
+                e.style.backgroundColor = "red";
+            }else{
+                e.style.backgroundColor = "green";
+            }
+        });
         cell.appendChild(e);
         row.appendChild(cell);
     }
@@ -208,9 +212,7 @@ for (let i = 1; i <= 6; i++) {
     for (let j = 1; j <= 6; j++) {
         const cell = document.createElement("td");
         const e = document.createElement("button");
-        e.addEventListener("click", function() {
-            e.style.backgroundColor = "red";
-        });
+
         if ((i === by1 && j === bx1)) {
             e.style.backgroundColor = "blue";
         }
@@ -229,6 +231,13 @@ for (let i = 1; i <= 6; i++) {
         if ((i === by33 && j === bx33)) {
             e.style.backgroundColor = "blue";
         }
+        e.addEventListener("click", function() {
+            if (e.style.backgroundColor !== "blue") {
+                e.style.backgroundColor = "red";
+            }else{
+                e.style.backgroundColor = "green";
+            }
+        });
         cell.appendChild(e);
         row.appendChild(cell);
     }
