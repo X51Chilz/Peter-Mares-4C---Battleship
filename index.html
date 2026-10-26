@@ -25,14 +25,37 @@
         #hrac2 {
             display: flex;
         }
+
+        #btn-hotovo, #btn-pripraven {
+            width: auto;
+            height: 50px;
+            padding: 0 20px;
+            font-size: 16px;
+            cursor: pointer;
+            display: none;
+        }
+
+        #btn-hotovo {
+            position: fixed;
+            bottom: 40px;
+            left: 50%;
+            transform: translateX(-50%);
+        }
     </style>
 </head>
 
 <body>
     <div id="hrac1">
     </div>
+    <div id="hrac1-cile">
+    </div>
     <div id="hrac2">
     </div>
+    <div id="hrac2-cile">
+    </div>
+
+    <button id="btn-hotovo">Hotovo</button>
+    <button id="btn-pripraven">Hráč připraven</button>
 </body>
 
 </html>

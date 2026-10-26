@@ -1,6 +1,7 @@
-const x = document.getElementById("hrac1");
-
-const table = document.createElement("table");
+let kolo = 0;
+let vystreleno = false;
+const btnHotovo = document.getElementById("btn-hotovo");
+const btnPripraven = document.getElementById("btn-pripraven");
 
 
 // ----------------------------------------lodě pro hráče 1
@@ -13,8 +14,8 @@ if (rand1 === 1) {
     ay11 = ay1;
     ax11 = ax1 - 1;
     if (ax11 < 1) {
-    ax11 = ax1 + 1;
-}
+        ax11 = ax1 + 1;
+    }
 }
 if (rand1 === 2) {
     ax11 = ax1;
@@ -91,8 +92,8 @@ if (rand4 === 1) {
     by11 = by1;
     bx11 = bx1 - 1;
     if (bx11 < 1) {
-    bx11 = bx1 + 1;
-}
+        bx11 = bx1 + 1;
+    }
 }
 if (rand4 === 2) {
     bx11 = bx1;
@@ -156,15 +157,126 @@ if (rand6 === 2) {
         by33 = by3 + 1;
     }
 }
+// ---------------------------cíle hráč 1
+const k = document.getElementById("hrac1-cile");
 
-// ---------------------------pole hráč 1
+const table3 = document.createElement("table");
+
 for (let i = 1; i <= 6; i++) {
     const row = document.createElement("tr");
 
     for (let j = 1; j <= 6; j++) {
         const cell = document.createElement("td");
         const e = document.createElement("button");
-        
+
+        if ((i === ay1 && j === ax1)) {
+            e.dataset.lod = "true";
+        }
+        if ((i === ay11 && j === ax11)) {
+            e.dataset.lod = "true";
+        }
+        if ((i === ay2 && j === ax2)) {
+            e.dataset.lod = "true";
+        }
+        if ((i === ay22 && j === ax22)) {
+            e.dataset.lod = "true";
+        }
+        if ((i === ay3 && j === ax3)) {
+            e.dataset.lod = "true";
+        }
+        if ((i === ay33 && j === ax33)) {
+            e.dataset.lod = "true";
+        }
+        e.addEventListener("click", function () {
+            if (kolo % 2 === 0) return;
+            if (vystreleno) return;
+            if (e.style.backgroundColor === "red" || e.style.backgroundColor === "green") {
+                return;
+            }
+            const mainButton = document.getElementById("h1-" + i + "-" + j);
+            if (e.dataset.lod === "true") {
+                e.style.backgroundColor = "green";
+                mainButton.style.backgroundColor = "green";
+            } else {
+                e.style.backgroundColor = "red";
+                mainButton.style.backgroundColor = "red";
+            }
+            vystreleno = true;
+            btnHotovo.style.display = "block";
+        });
+        cell.appendChild(e);
+        row.appendChild(cell);
+    }
+    table3.appendChild(row);
+}
+k.appendChild(table3);
+//----------------------------cíle hráč 2
+const l = document.getElementById("hrac2-cile");
+
+const table4 = document.createElement("table");
+
+for (let i = 1; i <= 6; i++) {
+    const row = document.createElement("tr");
+
+    for (let j = 1; j <= 6; j++) {
+        const cell = document.createElement("td");
+        const e = document.createElement("button");
+
+        if ((i === by1 && j === bx1)) {
+            e.dataset.lod = "true";
+        }
+        if ((i === by11 && j === bx11)) {
+            e.dataset.lod = "true";
+        }
+        if ((i === by2 && j === bx2)) {
+            e.dataset.lod = "true";
+        }
+        if ((i === by22 && j === bx22)) {
+            e.dataset.lod = "true";
+        }
+        if ((i === by3 && j === bx3)) {
+            e.dataset.lod = "true";
+        }
+        if ((i === by33 && j === bx33)) {
+            e.dataset.lod = "true";
+        }
+        e.addEventListener("click", function () {
+            if (kolo % 2 === 1) return;
+            if (vystreleno) return;
+            if (e.style.backgroundColor === "red" || e.style.backgroundColor === "green") {
+                return;
+            }
+            const mainButton = document.getElementById("h2-" + i + "-" + j);
+            if (e.dataset.lod === "true") {
+                e.style.backgroundColor = "green";
+                mainButton.style.backgroundColor = "green";
+            } else {
+                e.style.backgroundColor = "red";
+                mainButton.style.backgroundColor = "red";
+            }
+            vystreleno = true;
+            btnHotovo.style.display = "block";
+        });
+        cell.appendChild(e);
+        row.appendChild(cell);
+    }
+    table4.appendChild(row);
+}
+l.appendChild(table4);
+// ---------------------------pole hráč 1
+
+const x = document.getElementById("hrac1");
+
+const table = document.createElement("table");
+
+for (let i = 1; i <= 6; i++) {
+    const row = document.createElement("tr");
+
+    for (let j = 1; j <= 6; j++) {
+        const cell = document.createElement("td");
+        const e = document.createElement("button");
+        e.id = "h1-" + i + "-" + j;
+
         if ((i === ay1 && j === ax1)) {
             e.style.backgroundColor = "blue";
         }
@@ -173,7 +285,6 @@ for (let i = 1; i <= 6; i++) {
         }
         if ((i === ay2 && j === ax2)) {
             e.style.backgroundColor = "blue";
-            
         }
         if ((i === ay22 && j === ax22)) {
             e.style.backgroundColor = "blue";
@@ -184,13 +295,6 @@ for (let i = 1; i <= 6; i++) {
         if ((i === ay33 && j === ax33)) {
             e.style.backgroundColor = "blue";
         }
-        e.addEventListener("click", function() {
-            if (e.style.backgroundColor !== "blue") {
-                e.style.backgroundColor = "red";
-            }else{
-                e.style.backgroundColor = "green";
-            }
-        });
         cell.appendChild(e);
         row.appendChild(cell);
     }
@@ -212,6 +316,7 @@ for (let i = 1; i <= 6; i++) {
     for (let j = 1; j <= 6; j++) {
         const cell = document.createElement("td");
         const e = document.createElement("button");
+        e.id = "h2-" + i + "-" + j;
 
         if ((i === by1 && j === bx1)) {
             e.style.backgroundColor = "blue";
@@ -231,13 +336,6 @@ for (let i = 1; i <= 6; i++) {
         if ((i === by33 && j === bx33)) {
             e.style.backgroundColor = "blue";
         }
-        e.addEventListener("click", function() {
-            if (e.style.backgroundColor !== "blue") {
-                e.style.backgroundColor = "red";
-            }else{
-                e.style.backgroundColor = "green";
-            }
-        });
         cell.appendChild(e);
         row.appendChild(cell);
     }
@@ -246,3 +344,37 @@ for (let i = 1; i <= 6; i++) {
 }
 
 y.appendChild(table2);
+
+function prepniKolo() {
+    if (kolo % 2 === 0) {
+        x.style.display = "flex";
+        l.style.display = "flex";
+        y.style.display = "none";
+        k.style.display = "none";
+    } else {
+        x.style.display = "none";
+        l.style.display = "none";
+        y.style.display = "flex";
+        k.style.display = "flex";
+    }
+}
+
+btnHotovo.addEventListener("click", function () {
+    x.style.display = "none";
+    y.style.display = "none";
+    k.style.display = "none";
+    l.style.display = "none";
+    btnHotovo.style.display = "none";
+    btnPripraven.style.display = "block";
+});
+
+btnPripraven.addEventListener("click", function () {
+    btnPripraven.style.display = "none";
+    kolo++;
+    vystreleno = false;
+    prepniKolo();
+});
+
+prepniKolo();
+
+
