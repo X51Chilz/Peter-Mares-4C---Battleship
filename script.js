@@ -197,6 +197,17 @@ for (let i = 1; i <= 6; i++) {
             if (e.dataset.lod === "true") {
                 e.style.backgroundColor = "green";
                 mainButton.style.backgroundColor = "green";
+
+                if (
+                    document.getElementById("h1-" + ay1 + "-" + ax1).style.backgroundColor === "green" &&
+                    document.getElementById("h1-" + ay11 + "-" + ax11).style.backgroundColor === "green" &&
+                    document.getElementById("h1-" + ay2 + "-" + ax2).style.backgroundColor === "green" &&
+                    document.getElementById("h1-" + ay22 + "-" + ax22).style.backgroundColor === "green" &&
+                    document.getElementById("h1-" + ay3 + "-" + ax3).style.backgroundColor === "green" &&
+                    document.getElementById("h1-" + ay33 + "-" + ax33).style.backgroundColor === "green"
+                ) {
+                    alert("hráč 2 vyhrál");
+                }
             } else {
                 e.style.backgroundColor = "red";
                 mainButton.style.backgroundColor = "red";
@@ -250,6 +261,17 @@ for (let i = 1; i <= 6; i++) {
             if (e.dataset.lod === "true") {
                 e.style.backgroundColor = "green";
                 mainButton.style.backgroundColor = "green";
+
+                if (
+                    document.getElementById("h2-" + by1 + "-" + bx1).style.backgroundColor === "green" &&
+                    document.getElementById("h2-" + by11 + "-" + bx11).style.backgroundColor === "green" &&
+                    document.getElementById("h2-" + by2 + "-" + bx2).style.backgroundColor === "green" &&
+                    document.getElementById("h2-" + by22 + "-" + bx22).style.backgroundColor === "green" &&
+                    document.getElementById("h2-" + by3 + "-" + bx3).style.backgroundColor === "green" &&
+                    document.getElementById("h2-" + by33 + "-" + bx33).style.backgroundColor === "green"
+                ) {
+                    alert("hráč 1 vyhrál");
+                }
             } else {
                 e.style.backgroundColor = "red";
                 mainButton.style.backgroundColor = "red";
